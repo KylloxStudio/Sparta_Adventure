@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -38,7 +37,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 _finalPos;
     private Vector2 _inputDir;
 
-    private bool _isThirdPersonView;
+    public bool IsThirdPersonView { get; private set; }
 
     private void Start()
     {
@@ -53,14 +52,14 @@ public class CameraMovement : MonoBehaviour
 
         _finalDistance = _maxDistance;
 
-        _player.CharacterModel.SetActive(_isThirdPersonView);
+        _player.CharacterModel.SetActive(IsThirdPersonView);
     }
 
     private void Update()
     {
-        _minClampAngle = _isThirdPersonView ? _minClampAngleTPV : _minClampAngleFPV;
-        _maxClampAngle = _isThirdPersonView ? _maxClampAngleTPV : _maxClampAngleFPV;
-        _nomalizedPos = _isThirdPersonView ? _nomalizedPosTPV : _nomalizedPosFPV;
+        _minClampAngle = IsThirdPersonView ? _minClampAngleTPV : _minClampAngleFPV;
+        _maxClampAngle = IsThirdPersonView ? _maxClampAngleTPV : _maxClampAngleFPV;
+        _nomalizedPos = IsThirdPersonView ? _nomalizedPosTPV : _nomalizedPosFPV;
     }
 
     private void LateUpdate()
@@ -102,8 +101,8 @@ public class CameraMovement : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            _isThirdPersonView = !_isThirdPersonView;
-            _player.CharacterModel.SetActive(_isThirdPersonView);
+            IsThirdPersonView = !IsThirdPersonView;
+            _player.CharacterModel.SetActive(IsThirdPersonView);
         }
     }
 }

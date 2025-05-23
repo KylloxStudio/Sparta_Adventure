@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CampFire : MonoBehaviour
+public class CampFire : MonoBehaviour, IInteractable
 {
     [SerializeField] private ParticleSystem _fireParticle;
     [SerializeField] private Light _light;
@@ -30,14 +30,14 @@ public class CampFire : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (!_isBurning)
         {
             return;
         }
 
-        if (other.TryGetComponent(out IDamagable damagable))
+        if (other.TryGetComponent(out IDamagable damagable) && !_damagableThings.Contains(damagable))
         {
             _damagableThings.Add(damagable);
         }
@@ -89,5 +89,16 @@ public class CampFire : MonoBehaviour
         {
             _damagableThings[i].TakePhysicalDamage(_damage);
         }
+    }
+
+    public string GetInteractPrompt()
+    {
+        string str = $"¸ð´ÚºÒ\n[F] {(_isBurning ? "ºÒ ²ô±â" : "ºÒ ÇÇ¿ì±â")}";
+        return str;
+    }
+
+    public void OnInteract()
+    {
+        SetBurning(!_isBurning);
     }
 }
