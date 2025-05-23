@@ -233,6 +233,11 @@ public class PlayerController : MonoBehaviour
         _rigid.AddForce(Vector3.up * power, ForceMode.Impulse);
     }
 
+    public void AddForce(Vector3 force, ForceMode forceMode)
+    {
+        _rigid.AddForce(force, forceMode);
+    }
+
     private bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
