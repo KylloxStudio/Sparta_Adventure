@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerItemSlot : MonoBehaviour
 {
     private Player _player;
-    private List<ItemData> _items = new List<ItemData>();
+    private ItemData[] _items;
     [SerializeField] private ItemSlot[] _itemSlots;
 
     private int _index = 0;
@@ -15,18 +15,18 @@ public class PlayerItemSlot : MonoBehaviour
     private void Awake()
     {
         _player = Singleton<CharacterManager>.Instance().Player;
+        _items = new ItemData[_itemSlots.Length];
     }
 
     public void TryAddItem(ItemObject item)
     {
-        if (_items.Count >= _itemSlots.Length)
+        if (_index >= _itemSlots.Length)
         {
             return;
         }
 
-        _items.Add(item.Data);
         _index++;
-
+        _items[_index] = item.Data;
         _itemSlots[_index].Icon.sprite = item.Data.Icon;
         _itemSlots[_index].Icon.gameObject.SetActive(true);
         item.gameObject.SetActive(false);
@@ -42,14 +42,14 @@ public class PlayerItemSlot : MonoBehaviour
 
     private void TryUseItem()
     {
-        if (_items.Count <= 0)
+        if (_index <= 0)
         {
             return;
         }
 
         StartCoroutine(UseItem());
 
-        _items.Remove(_items[_index]);
+        _items[_index] = null;
         _itemSlots[_index].Icon.sprite = null;
         _itemSlots[_index].Icon.gameObject.SetActive(false);
 

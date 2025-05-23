@@ -17,10 +17,12 @@ public class Interaction : MonoBehaviour
     [SerializeField] private GameObject _promptTextObject;
     private TextMeshProUGUI _promptText;
     private Camera _mainCamera;
+    private CameraMovement _cameraMovement;
 
     private void Start()
     {
         _mainCamera = Camera.main;
+        _cameraMovement = _mainCamera.GetComponentInParent<CameraMovement>();
         _promptText = _promptTextObject.GetComponentInChildren<TextMeshProUGUI>();
     }
 
@@ -32,7 +34,7 @@ public class Interaction : MonoBehaviour
         }
 
         Ray ray = _mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
-        if (Physics.Raycast(ray, out RaycastHit hit, _maxCheckDistacne, _layerMask.value))
+        if (Physics.Raycast(ray, out RaycastHit hit, _maxCheckDistacne * (_cameraMovement.IsThirdPersonView ? 2.5f : 1f), _layerMask.value))
         {
             if (hit.collider.gameObject != _curInteractableObject)
             {
