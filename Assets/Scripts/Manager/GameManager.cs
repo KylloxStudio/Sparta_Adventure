@@ -19,6 +19,8 @@ public class GameManager : Singleton<GameManager>
     public void OnResetEvent()
     {
         Player.ItemSlot.Clear();
+        Player.Controller.SpeedBonus = 0f;
+        Player.Controller.JumpPowerBonus = 0f;
         Player.transform.SetPositionAndRotation(Player.InitialPosition, Quaternion.Euler(0f, 0f, 0f));
 
         for (int i = 0; i < _itemObjects.Length; i++)
