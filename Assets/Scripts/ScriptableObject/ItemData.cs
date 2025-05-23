@@ -19,7 +19,7 @@ public class ItemDataUsable
 {
     public UseType Type;
     public float Value;
-    public float EffectTime;
+    public float Duration;
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
