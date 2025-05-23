@@ -13,7 +13,7 @@ public class DamageIndicator : MonoBehaviour
 
     private void Start()
     {
-        Singleton<CharacterManager>.Instance().Player.Condition.OnTakeDamage += Flash;
+        Singleton<GameManager>.Instance().Player.Condition.OnTakeDamage += Flash;
     }
 
     public void Flash()

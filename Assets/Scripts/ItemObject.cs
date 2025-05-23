@@ -16,6 +16,6 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Singleton<CharacterManager>.Instance().Player.ItemSlot.TryAddItem(this);
+        Singleton<GameManager>.Instance().Player.ItemSlot.TryAddItem(this);
     }
 }

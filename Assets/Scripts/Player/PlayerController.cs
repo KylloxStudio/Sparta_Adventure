@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _smoothness;
 
     private bool _isLockedCameraRot;
-    private Vector3 _initialPos;
 
     private void Awake()
     {
@@ -54,14 +53,13 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         MoveSpeed = _walkSpeed;
-        _initialPos = transform.position;
     }
 
     private void Update()
     {
         if (_player.Condition.UICondition.Health.CurValue <= 0f)
         {
-            transform.position = _initialPos;
+            Singleton<GameManager>.Instance().OnResetEvent();
             _player.Condition.UICondition.Health.Set(_player.Condition.UICondition.Health.MaxValue);
             return;
         }
@@ -257,13 +255,5 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
-    }
-
-    public void OnReset(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            transform.position = _initialPos;
-        }
     }
 }

@@ -51,15 +51,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Reset",
-                    "type": "Button",
-                    "id": "cfbd07aa-53d9-4809-bdc9-8da1a9e27e38",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "UseItem",
                     "type": "Button",
                     "id": "3df821da-64fd-477b-b5e7-85204710c6a7",
@@ -177,17 +168,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b8bc4465-e1d6-4558-b3e1-db6fe8de7027",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Reset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

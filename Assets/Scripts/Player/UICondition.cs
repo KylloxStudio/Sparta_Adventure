@@ -14,6 +14,6 @@ public class UICondition : MonoBehaviour
 
     private void Start()
     {
-        Singleton<CharacterManager>.Instance().Player.Condition.UICondition = this;
+        Singleton<GameManager>.Instance().Player.Condition.UICondition = this;
     }
 }

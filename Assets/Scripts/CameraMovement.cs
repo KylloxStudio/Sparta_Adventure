@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        _player = Singleton<CharacterManager>.Instance().Player;
+        _player = Singleton<GameManager>.Instance().Player;
         _objectToFollow = _player.transform;
         _mainCamera = Camera.main.transform;
 

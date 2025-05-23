@@ -64,7 +64,7 @@ public class JumpPlatform : MonoBehaviour
             }
         }
 
-        Player player = Singleton<CharacterManager>.Instance().Player;
+        Player player = Singleton<GameManager>.Instance().Player;
         Vector3 force = _isForward ? (_power * 0.4f * player.transform.forward) + (Vector3.up * _power) : Vector3.up * _power;
         player.Controller.AddForce(force, ForceMode.Impulse);
         yield break;

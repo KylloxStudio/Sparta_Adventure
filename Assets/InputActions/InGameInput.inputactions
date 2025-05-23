@@ -1,0 +1,34 @@
+{
+    "name": "InGameInput",
+    "maps": [
+        {
+            "name": "InGame",
+            "id": "1f6bea19-1c82-4ab8-a3ec-878b6594b76d",
+            "actions": [
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "d76e3c06-19c1-4eb0-8961-53789049689e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f8dd6fb2-1add-40f6-a052-9b9431dd8d48",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -10,13 +10,19 @@ public class Player : MonoBehaviour
     public PlayerItemSlot ItemSlot { get; private set; }
 
     public GameObject CharacterModel { get; private set; }
+    public Vector3 InitialPosition { get; private set; }
 
     private void Awake()
     {
-        Singleton<CharacterManager>.Instance().Player = this;
+        Singleton<GameManager>.Instance().Player = this;
         Controller = GetComponent<PlayerController>();
         Condition = GetComponent<PlayerCondition>();
         ItemSlot = GetComponent<PlayerItemSlot>();
         CharacterModel = transform.GetChild(0).gameObject;
+    }
+
+    private void Start()
+    {
+        InitialPosition = transform.position;
     }
 }

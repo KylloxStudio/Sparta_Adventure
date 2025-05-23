@@ -14,8 +14,20 @@ public class PlayerItemSlot : MonoBehaviour
 
     private void Awake()
     {
-        _player = Singleton<CharacterManager>.Instance().Player;
+        _player = Singleton<GameManager>.Instance().Player;
         _items = new ItemData[_itemSlots.Length];
+    }
+
+    public void Clear()
+    {
+        for (int i = 0; i < _items.Length; i++)
+        {
+            _items[i] = null;
+            _itemSlots[i].Icon.sprite = null;
+            _itemSlots[i].Icon.gameObject.SetActive(false);
+        }
+
+        _index = 0;
     }
 
     public void TryAddItem(ItemObject item)
